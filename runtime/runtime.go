@@ -11,8 +11,8 @@ import (
 	"strings"
 
 	"github.com/coreos/go-iptables/iptables"
-	"github.com/shynuu/classifier-runtime/lib/slicing"
-	"github.com/shynuu/classifier-runtime/lib/u32"
+	"github.com/zbh888/classifier-runtime/lib/slicing"
+	"github.com/zbh888/classifier-runtime/lib/u32"
 )
 
 func runTC(args ...string) error {

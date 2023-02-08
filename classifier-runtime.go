@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/shynuu/classifier-runtime/runtime"
+	"github.com/zbh888/classifier-runtime/runtime"
 	"github.com/urfave/cli/v2"
 )
 
