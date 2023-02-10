@@ -197,7 +197,7 @@ func (r *Runtime) NewPDU(pdu *PDU) error {
 		return nil
 	}
 
-	label := slicing.NewLabel(pdu.SliceID, true, 0x2e)
+	label := slicing.NewLabel(pdu.SliceID, true, pdu.DSCP5)
 
 	iface, err := FindInterface(pdu.Ingress)
 	if err != nil {
@@ -208,7 +208,7 @@ func (r *Runtime) NewPDU(pdu *PDU) error {
 		return err
 	}
 
-	var dscp5GString string = fmt.Sprintf("0x%s", hex.EncodeToString([]byte{0x2e}))
+	var dscp5GString string = fmt.Sprintf("0x%s", hex.EncodeToString([]byte{pdu.DSCP5}))
         
 	print("BOHAN MADE A CHANGE")
 	
