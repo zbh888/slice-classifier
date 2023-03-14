@@ -77,12 +77,12 @@ func HandleDeleteConnection(c *gin.Context) {
 func HandleBuildConnection(c *gin.Context) {
 	ip := c.Params.ByName("to")
 	cmd := exec.Command("ip", "route", "add", "default", "via", ip, "table", "link_0")
-	_, err := cmd.CombinedOutput()
+	output, err := cmd.CombinedOutput()
 	if err != nil {
 		c.JSON(200, gin.H{
-			"message": fmt.Sprintf("CONNECTION NOT RECOVER"),})
+			"message": fmt.Sprintf("CONNECTION NOT RECOVER %s", string(output)),})
 	} else {
 		c.JSON(200, gin.H{
-			"message": fmt.Sprintf("CONNECTION RECOVER"),})
+			"message": fmt.Sprintf("CONNECTION RECOVER %s", string(output)),})
 	}
 }
