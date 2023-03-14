@@ -59,3 +59,10 @@ func HandlePDU(c *gin.Context) {
 		"message": fmt.Sprintf("Pipe success on %s", RuntimeConfig.ClassifierName),
 	})
 }
+
+// HandleDeleteConnection will cut of the connection between satellite and classifier
+func HandleDeleteConnection(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"message": fmt.Sprintf("CONNECTION CUTOFF"),
+	})
+}
