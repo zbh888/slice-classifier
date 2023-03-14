@@ -113,7 +113,7 @@ func InitRouter(secure bool, production bool) error {
 		{
 			"buildConnection",
 			METHODPOST,
-			"/connect/:to",
+			"/connect",
 			HandleBuildConnection,
 		},
 	}
