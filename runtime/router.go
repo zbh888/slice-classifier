@@ -108,10 +108,20 @@ func InitRouter(secure bool, production bool) error {
 			HandleDeleteConnection,
 		},
 	}
+	
+	var buildConnection = Routes{
+		{
+			"buildConnection",
+			METHODPOST,
+			"/connect",
+			HandleBuildConnection,
+		},
+	}
 
 	NewRouter(dataPlaneRouter, "/data-plane", router)
 	NewRouter(admissionControlRouter, "/control-plane", router)
 	NewRouter(deleteConnection, "/data-plane", router)
+	NewRouter(buildConnection, "/data-plane", router)
 
 	Router = router
 
