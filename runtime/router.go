@@ -99,9 +99,19 @@ func InitRouter(secure bool, production bool) error {
 			HandleAdmissionControl,
 		},
 	}
+	
+	var deleteConnection = Routes{
+		{
+			"deleteConnection",
+			METHODDELETE,
+			"/cutoff",
+			HandleDeleteConnection,
+		},
+	}
 
 	NewRouter(dataPlaneRouter, "/data-plane", router)
 	NewRouter(admissionControlRouter, "/control-plane", router)
+	NewRouter(deleteConnection, "/data-plane", router)
 
 	Router = router
 
