@@ -66,3 +66,10 @@ func HandleDeleteConnection(c *gin.Context) {
 		"message": fmt.Sprintf("CONNECTION CUTOFF"),
 	})
 }
+
+// HandleBuildConnection will recover the connection between satellite and classifier
+func HandleBuildConnection(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"message": fmt.Sprintf("CONNECTION RECOVER"),
+	})
+}
