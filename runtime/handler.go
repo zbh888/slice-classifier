@@ -3,7 +3,7 @@ package runtime
 import (
 	"fmt"
 	"log"
-
+	"os/exec"
 	"github.com/gin-gonic/gin"
 )
 
@@ -62,9 +62,15 @@ func HandlePDU(c *gin.Context) {
 
 // HandleDeleteConnection will cut of the connection between satellite and classifier
 func HandleDeleteConnection(c *gin.Context) {
-	c.JSON(200, gin.H{
-		"message": fmt.Sprintf("CONNECTION CUTOFF"),
-	})
+	cmd := exec.Command("ip", "route", "del", "default", "table", "link_0")
+	_, err := cmd.CombinedOutput()
+	if err != nil {
+		c.JSON(200, gin.H{
+			"message": fmt.Sprintf("CONNECTION NOT OFF"),})
+	} else {
+		c.JSON(200, gin.H{
+			"message": fmt.Sprintf("CONNECTION CUTOFF"),})
+	}
 }
 
 // HandleBuildConnection will recover the connection between satellite and classifier
